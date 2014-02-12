@@ -12,6 +12,7 @@ NewsReader.Routers.Feeds = Backbone.Router.extend({
     var that = this;
 
     NewsReader.feeds.fetch({
+
       success: function() {
         var indexView = new NewsReader.Views.FeedsIndex({
           collection: NewsReader.feeds
@@ -19,6 +20,7 @@ NewsReader.Routers.Feeds = Backbone.Router.extend({
 
         that._swapView(indexView);
       }
+
     });
   },
 

@@ -3,6 +3,18 @@ NewsReader.Views.Feed = Backbone.View.extend({
 
   initialize: function() {
 
+  },
+
+  render: function() {
+    var that = this;
+
+    var renderedContent = this.template({
+      feed: that.model
+    });
+
+    this.$el.html(renderedContent);
+
+    return this;
   }
 
 
