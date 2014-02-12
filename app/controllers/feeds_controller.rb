@@ -16,12 +16,23 @@ class FeedsController < ApplicationController
   end
 
   def refresh
+    time = Time.now
     feed = Feed.find(params[:id])
-    feed.reload
-    # render :json => feed.as_json(include: :entries)
-    respond_to do |format|
-      format.html { render :index }
-      format.json { render :json => feed.as_json(include: :entries) }
+
+    if time > feed.updated_at + 120
+      feed.reload
+
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render :json => feed.as_json(include: :entries) }
+      end
+
+    else
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render :json => feed.as_json(include: :entries) }
+      end
     end
+
   end
 end
