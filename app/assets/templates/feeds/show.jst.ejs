@@ -1,9 +1,12 @@
+<!-- FEED SHOW -->
 <h3><%= feed.escape("title") %></h3>
 
 <ul>
 <% feed.get('entries').each(function(entry) { %>
   <li>
-    <a href="#"><%= entry.escape("title")%>
+    <a href="#/feeds/<%= feed.id %>/entries/<%= entry.id %>">
+      <%= entry.escape("title")%>
+    </a>
   </li>
 <% })%>
 </ul>

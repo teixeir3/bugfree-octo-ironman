@@ -5,7 +5,8 @@ NewsReader.Routers.Feeds = Backbone.Router.extend({
 
   routes: {
     "": "index",
-    "feeds/:id": "show"
+    "feeds/:id": "show",
+    "feeds/:feed_id/entries/:id": "showEntry"
   },
 
   index: function () {
@@ -33,6 +34,20 @@ NewsReader.Routers.Feeds = Backbone.Router.extend({
       });
 
       that._swapView(feedView);
+    });
+  },
+
+  showEntry: function(feedId, id) {
+    var that = this;
+    that._getFeed(feedId, function(feed){
+      var entries = feed.get("entries");
+      var entry = entries.get(id);
+      console.log(entry);
+
+      var entryView = new NewsReader.Views.Entry({
+        model: entry
+      });
+      that._swapView(entryView)
     });
   },
 
