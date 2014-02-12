@@ -7,7 +7,6 @@ NewsReader.Views.Entry = Backbone.View.extend({
 
   render: function() {
     var that = this;
-    console.log(that.model);
     var renderedContent = this.template({
       entry: that.model
     });
