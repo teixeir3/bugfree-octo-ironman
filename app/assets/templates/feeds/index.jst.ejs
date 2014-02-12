@@ -1,0 +1,8 @@
+<h2>Feeds index</h2>
+<ul>
+ <% feeds.each(function(feed) { %>
+   <li>
+     <%= feed.escape("title") %>
+   </li>
+ <% }); %>
+</ul>
